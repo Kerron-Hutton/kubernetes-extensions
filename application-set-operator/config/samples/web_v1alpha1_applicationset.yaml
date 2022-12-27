@@ -1,0 +1,16 @@
+apiVersion: web.tutorial.kubebuilder.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  labels:
+    app.kubernetes.io/name: applicationset
+    app.kubernetes.io/instance: applicationset-sample
+    app.kubernetes.io/part-of: application-set-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: application-set-operator
+  name: applicationset-sample
+spec:
+  backend:
+    image: nginx:latest
+  frontend:
+    image: nginx:latest
+    

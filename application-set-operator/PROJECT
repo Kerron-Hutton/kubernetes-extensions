@@ -1,0 +1,16 @@
+domain: tutorial.kubebuilder.io
+layout:
+- go.kubebuilder.io/v3
+projectName: application-set-operator
+repo: tutorial.kubebuilder.io/application-set-operator
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: tutorial.kubebuilder.io
+  group: web
+  kind: ApplicationSet
+  path: tutorial.kubebuilder.io/application-set-operator/api/v1alpha1
+  version: v1alpha1
+version: "3"

@@ -1,0 +1,88 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.10.0
+  creationTimestamp: null
+  name: applicationsets.web.tutorial.kubebuilder.io
+spec:
+  group: web.tutorial.kubebuilder.io
+  names:
+    kind: ApplicationSet
+    listKind: ApplicationSetList
+    plural: applicationsets
+    singular: applicationset
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: ApplicationSet is the Schema for the applicationsets API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: ApplicationSetSpec defines the desired state of ApplicationSet
+            properties:
+              backend:
+                description: ApplicationSetConfig Configurable properties for the
+                  ApplicationSet
+                properties:
+                  image:
+                    type: string
+                  port:
+                    default: 80
+                    format: int32
+                    type: integer
+                  replicas:
+                    default: 2
+                    format: int32
+                    type: integer
+                required:
+                - image
+                type: object
+              frontend:
+                description: ApplicationSetConfig Configurable properties for the
+                  ApplicationSet
+                properties:
+                  image:
+                    type: string
+                  port:
+                    default: 80
+                    format: int32
+                    type: integer
+                  replicas:
+                    default: 2
+                    format: int32
+                    type: integer
+                required:
+                - image
+                type: object
+            required:
+            - backend
+            - frontend
+            type: object
+          status:
+            description: ApplicationSetStatus defines the observed state of ApplicationSet
+            properties:
+              created:
+                type: string
+            required:
+            - created
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
